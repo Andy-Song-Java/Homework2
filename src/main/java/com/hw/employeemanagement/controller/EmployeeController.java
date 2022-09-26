@@ -21,6 +21,10 @@ public class EmployeeController {
     public List<Employee> getEmployees(){
         return service.getAllEmployees();
     }
+    @GetMapping(value="/filter/{salary}")
+    public List<String> filerBySalary(@PathVariable double salary){
+        return service.filterBySalary(salary);
+    }
     @PutMapping(value = "/update/{id}")
     public void updateEmployee(@RequestBody Employee temp){
         service.updateEmployee(temp);

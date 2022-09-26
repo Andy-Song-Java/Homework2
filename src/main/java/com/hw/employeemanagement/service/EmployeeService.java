@@ -1,5 +1,6 @@
 package com.hw.employeemanagement.service;
 
+import com.hw.employeemanagement.helper.EmployeeHelper;
 import com.hw.employeemanagement.model.Employee;
 import com.hw.employeemanagement.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import java.util.List;
 public class EmployeeService {
     @Autowired
     EmployeeRepository repo;
+
+    @Autowired
+    EmployeeHelper helper;
 
     public Employee getEmployeeById(int id) {
         return repo.findById(id).orElse(null);
@@ -31,5 +35,9 @@ public class EmployeeService {
     }
     public void deleteAllEmployee(){
         repo.deleteAll();
+    }
+
+    public List<String> filterBySalary(double salary){
+        return helper.filerBySalary(salary);
     }
 }
